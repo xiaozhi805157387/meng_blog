@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Kotlin：内置函数let、also、with、run、apply使用</title>
+      <link href="/2019/12/03/Kotlin%EF%BC%9A%E5%B7%A7%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0let%E3%80%81also%E3%80%81with%E3%80%81run%E3%80%81apply%E5%A4%A7%E5%A4%A7%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%EF%BC%81/"/>
+      <url>/2019/12/03/Kotlin%EF%BC%9A%E5%B7%A7%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0let%E3%80%81also%E3%80%81with%E3%80%81run%E3%80%81apply%E5%A4%A7%E5%A4%A7%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%EF%BC%81/</url>
+      
+        <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>在最近学习 kotlin 的时候，看到每个对象/属性后面都有几个函数</p><ul><li>let</li><li>also</li><li>with</li><li>run</li><li>apply<br>话不多说直接看兄啊过</li></ul><h4 id="1-let-函数"><a href="#1-let-函数" class="headerlink" title="1.let 函数"></a>1.let 函数</h4><ul><li>使用方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//写法1</span><br><span class="line">obj.let&#123;</span><br><span class="line">it-&gt; //这句话默认不设置是 it,当然可以设置其他的变量名</span><br><span class="line">//这里面可以使用公有的属性 或者 方法</span><br><span class="line">it.func1()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//写法2</span><br><span class="line">obj?.let&#123;</span><br><span class="line">it-&gt; //这句话默认不设置是 it,当然可以设置其他的变量名</span><br><span class="line">//这里面相当判断obj不等于空的条件下，才会执行这里面的结构体</span><br><span class="line">it.func1()</span><br><span class="line">it.name = &quot;懵懵&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">相当于java写法</span><br><span class="line">if(obj != null)&#123;</span><br><span class="line">obj.fun1()</span><br><span class="line">obj.setName(&quot;懵懵&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="2-also函数"><a href="#2-also函数" class="headerlink" title="2.also函数"></a>2.also函数</h4><blockquote><p>其实跟let函数差不多，但区别是返回值吧</p></blockquote><ul><li><p>使用方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var res = obj.also&#123;</span><br><span class="line">it.fun1()</span><br><span class="line">it.name = &quot;懵懵&quot;</span><br><span class="line">999</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(res)</span><br><span class="line">//输出结果是obj&#123;&#125; ，这个对象的信息，相反let,是获取最后一行或者return返回的值</span><br></pre></td></tr></table></figure></li><li><p>区别</p><ul><li>let 是根据最后一行的结果决定res是什么</li><li>also 是传入对象的本身</li></ul></li></ul><h4 id="3-with-函数"><a href="#3-with-函数" class="headerlink" title="3.with 函数"></a>3.with 函数</h4><blockquote><p>调用同一个对象的多个方法/属性时，去除对象名</p></blockquote><ul><li>使用方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with(obj)&#123;</span><br><span class="line">func1() //相当于 obj.func1()</span><br><span class="line">println(&quot;大家好，我的名字是$name&quot;) //相当于println(&quot;大家好，我的名字是$&#123;obj.name&#125;&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="4-run函数"><a href="#4-run函数" class="headerlink" title="4.run函数"></a>4.run函数</h4><blockquote><p>跟with函数有点类似，不过多一个返回值。可以做判空处理</p></blockquote><ul><li>使用方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">val user = User(&quot;懵懵&quot;)</span><br><span class="line">val num = user?.run&#123;</span><br><span class="line">println(&quot;大家好，我的名字是$name&quot;) //相当于println(&quot;大家好，我的名字是$&#123;obj.name&#125;&quot;)</span><br><span class="line">999</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(user1)</span><br><span class="line">//打印 999</span><br></pre></td></tr></table></figure></li></ul><h4 id="5-apply函数"><a href="#5-apply函数" class="headerlink" title="5.apply函数"></a>5.apply函数</h4><blockquote><p>跟run 函数类似，跟also函数一样，会返回对象本身，不是最后一行</p></blockquote><ul><li>使用方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">val user = User(&quot;懵懵&quot;)</span><br><span class="line">val user1 = user.apply&#123;</span><br><span class="line">println(&quot;大家好，我的名字是$name&quot;) //相当于println(&quot;大家好，我的名字是$&#123;obj.name&#125;&quot;)</span><br><span class="line">999</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(user1)</span><br><span class="line">//打印 user1&#123;name:&quot;懵懵&quot;&#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> kotlin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>可以在子线程直接new一个Handler吗？怎么做？</title>
       <link href="/2019/11/24/%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%AD%90%E7%BA%BF%E7%A8%8B%E7%9B%B4%E6%8E%A5new%E4%B8%80%E4%B8%AAHandler%E5%90%97%EF%BC%9F%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F/"/>
       <url>/2019/11/24/%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%AD%90%E7%BA%BF%E7%A8%8B%E7%9B%B4%E6%8E%A5new%E4%B8%80%E4%B8%AAHandler%E5%90%97%EF%BC%9F%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F/</url>
@@ -14,6 +41,8 @@
       <categories>
           
           <category> android </category>
+          
+          <category> 面试题 </category>
           
       </categories>
       
