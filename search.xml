@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>android studio 的logcat(日志)筛选栏消失的</title>
+      <link href="/2019/12/18/android-studio-%E7%9A%84logcat-%E6%97%A5%E5%BF%97-%E7%AD%9B%E9%80%89%E6%A0%8F%E6%B6%88%E5%A4%B1%E4%BA%86/"/>
+      <url>/2019/12/18/android-studio-%E7%9A%84logcat-%E6%97%A5%E5%BF%97-%E7%AD%9B%E9%80%89%E6%A0%8F%E6%B6%88%E5%A4%B1%E4%BA%86/</url>
+      
+        <content type="html"><![CDATA[<h4 id="前奏"><a href="#前奏" class="headerlink" title="前奏"></a>前奏</h4><p>最近不知道为什么老出现这个情况，很纠结，像我这种要去不同的设备查看信息，遇到这种情况不能筛选整个人都要气猛了<br>![url]{<a href="https://upload-images.jianshu.io/upload_images/5797132-e49738d826cb757e.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200}" target="_blank" rel="noopener">https://upload-images.jianshu.io/upload_images/5797132-e49738d826cb757e.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200}</a></p><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="一、重启"><a href="#一、重启" class="headerlink" title="一、重启"></a>一、重启</h5><p>把开发软件关闭，然后重新打开就会有了，如果还没有，则重启电脑再看看，缺点太麻烦了</p><h5 id="二、位置切换"><a href="#二、位置切换" class="headerlink" title="二、位置切换"></a>二、位置切换</h5><p>右键点击logcat头部，选择 <code>MoveTo</code> 任意一个选项，例如left top，然后解决问题之后选择 <code>Bottom Left</code> 或者 <code>Bottom Right</code>。 缺点 展示没发现啥</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> bug </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Kotlin：内置函数let、also、with、run、apply使用</title>
       <link href="/2019/12/03/Kotlin%EF%BC%9A%E5%B7%A7%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0let%E3%80%81also%E3%80%81with%E3%80%81run%E3%80%81apply%E5%A4%A7%E5%A4%A7%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%EF%BC%81/"/>
       <url>/2019/12/03/Kotlin%EF%BC%9A%E5%B7%A7%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0let%E3%80%81also%E3%80%81with%E3%80%81run%E3%80%81apply%E5%A4%A7%E5%A4%A7%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%EF%BC%81/</url>
